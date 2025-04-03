@@ -1,0 +1,178 @@
+<div>
+    <div class="container">
+        <form [formGroup]="complexForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" formControlName="name"/>
+                @if (name?.invalid) {
+                    <div class="error">
+                        This value is invalid.        
+                    </div>
+                 } @else {
+                    <div>
+                        
+                    </div>
+                 }
+
+
+                <!-- <div *ngIf="name?.invalid && name?.touched" class="error">
+                    This value is invalid.        
+                </div> -->
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" formControlName="email"/>
+                <div *ngIf="email?.invalid && email?.touched" class="error">
+                    This value is invalid.        
+                </div>
+            </div>
+
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" formControlName="age"/>
+                <div *ngIf="age?.invalid && age?.touched" class="error">
+                    This value is invalid.        
+                </div>
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" formControlName="password"/>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" formControlName="consent"/>
+                    I agree to the terms and conditions
+                </label>
+            </div>
+
+            <button type="submit" [disabled]="!complexForm.valid">Submit</button>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- TODO -->
+<!-- <div>
+    <div class="todo-container">
+        <input [(ngModel)]="newTask" placeholder="Add new task..." class="todo-input" />
+        <button (click)="addTask()" class="add-btn">Add</button>
+
+        <ul class="todo-list">
+
+            
+            @for (task of tasks; let i = $index; let e = $even; track task) {
+                <li class="todo-item">{{ i +1 }}: {{ task }}</li>
+            } @empty {
+                    <li>There are not task.</li>
+            }
+             
+            <li *ngFor="let task of tasks; let i = index" class="todo-item">
+                {{ task }}
+                <button (click)="removeTask(i)" class="remove-btn">Remove</button>
+            </li>
+        </ul>
+
+    </div>
+</div> -->
+
+
+    
+
+
+<!-- <div> -->
+    <!-- <p>test component</p> -->
+    <!-- <p>{{title}}</p> -->
+    <!-- <p>{{getFullName()}}</p>
+
+    <p [ngStyle]="{color: 'red'}">Ussed ngStyle</p>
+    <p [ngClass]="{'active': isActive, 'disabled': isDisabled}">Ussed ngClass</p>
+
+    <button [disabled]="!isEnabled">Click me!!!</button>
+    <div class="event-example" [ngClass] ="{'clicked': isClickedState}" ></div>
+    <button (click)="toggleState()">Click State</button> -->
+    <!-- <input type="text" [(ngModel)]="inputText"/>
+    <p>{{inputText}}</p> -->
+
+    <!-- <p>{{ childMessage }}</p>
+    <button (click)="sendMessageToParent()">Send message father</button> -->
+    <!-- <p appHighlight [highlightColor]="'blue'">Наведи курсор, щоб побачити еффект</p> -->
+
+<!-- OLD SYNTAX -->
+
+    <!-- <p *ngIf="isClickedState; else notClickedState">Кнопка була натиснена</p>
+
+    <ng-template #notClickedState>
+    <p>Кнопка ще не була натиснена!</p>
+    </ng-template>
+    <button (click)="toggleState()">Перемкни стейт</button> -->
+
+    <!-- <ul>
+        <li *ngFor="let user of users; index as i">{{i+1}} : {{user}}</li>
+    </ul> -->
+
+    <!-- <div [ngSwitch]="appState">
+        <p *ngSwitchCase="'active'">Аплікація активна</p>
+        <p *ngSwitchCase="'paused'">Аплікація призупинена</p>
+        <p *ngSwitchCase="'stopped'">Аплікація зупинена</p>
+        <p *ngSwitchDefault>Стан аплікації невідомий</p>
+    </div> -->
+
+
+<!-- NEW SYNTAX -->    
+ <!-- @if (isClickedState) {
+    <p>Кнопка була натиснена!</p>
+ } @else {
+    <p>Кнопка ще не була натиснена!</p>
+ }
+ <button (click)="toggleState()">Перемкни стейк</button> -->
+
+ <!-- <ul>
+    @for (item of items; track item.id; let idx = $index, e = $even) {
+        <li>Фрукт №{{ idx +1 }}: {{ item.name }}</li>
+    } @empty {
+         <li>There are not items.</li>
+    }
+ </ul> -->
+
+ <!-- @switch (appState) {
+    @case ('active') {
+        <p>аплікація активна</p>    
+    }
+    @case ('paused') {
+        <p>аплікація призупинена</p>    
+    }
+    @default {
+        <p>Стан аплікації невідомий</p>    
+    }
+
+ } -->
+
+ <!-- <p>{{today | date: 'shortDate'}}</p>
+
+ <p>{{ "hello world" | uppercase }}</p>
+
+ <p>{{ "HELLO WORLD" | lowercase }}</p>
+
+ <p>{{ 1500.5 | currency }}</p>
+
+ <p>{{ 1.23456789 | number}}</p>
+
+ <p>{{ 0.5 | percent }}</p>
+
+ <p>{{ "Hello World" | slice : 1: 5 }}</p>
+
+ <p>{{ {name:"Jhon", age: 30} | json }}</p>
+
+ <p>{{"Ну дуже довгий текст, що має бути обрізаний" | truncate: 18}}</p> -->
+
+
+   
+<!-- </div> -->

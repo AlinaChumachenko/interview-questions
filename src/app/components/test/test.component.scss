@@ -1,0 +1,185 @@
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f9e1e8, #e1d4f9); /* Градієнт від рожевого до лавандового */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Відстань між елементами форми */
+  }
+  
+  label {
+    font-size: 16px;
+    color: #6b4e71; /* Темно-ліловий для тексту */
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #d4a5a5; /* Ніжно-рожевий бордер */
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #fff7f9;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  
+    &:focus {
+      border-color: #ff99cc; /* Яскраво-рожевий при фокусі */
+      box-shadow: 0 0 10px rgba(255, 153, 204, 0.5);
+      outline: none;
+    }
+  }
+  
+  input[type="checkbox"] {
+    accent-color: #ff99cc; /* Колір чекбокса */
+    margin-right: 10px;
+  }
+  
+  .error {
+    color: #ff6b6b; /* Яскраво-червоний для помилок */
+    font-size: 12px;
+    margin-top: 5px;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    animation: fadeIn 0.3s ease-in;
+  }
+  
+  button[type="submit"] {
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #ff99cc, #d4a5a5); /* Градієнт для кнопки */
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 153, 204, 0.4);
+  
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 153, 204, 0.6);
+    }
+  
+    &:disabled {
+      background: #d3d3d3;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
+  /* Анімація для помилок */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Додатковий гламур для чекбокса */
+  label[for="consent"] {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #6b4e71;
+    cursor: pointer;
+  
+    &:hover input[type="checkbox"] {
+      box-shadow: 0 0 5px rgba(255, 153, 204, 0.5);
+    }
+  }
+
+
+.todo-container {
+    background-color: #f8f0e3; /* Пастельный бежевый */
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d3c0b4;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fcf8f3;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    background-color: #fbe4e4; /* Пастельный розовый */
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-btn {
+    background-color: #d4e4f7; /* Пастельный голубой */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: #f8d7da; /* Светло-красный пастельный */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p {
+    color: rgb(0, 255, 0)
+}
+
+.active {
+    background-color: aqua;
+}
+
+.disabled {
+    background-color: antiquewhite;
+    color: aqua;
+    cursor: not-allowed;
+}
+
+.event-example {
+    width: 200px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    text-align: 100px;
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: aqua;
+    color: #ffffff;
+}
