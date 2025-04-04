@@ -1,25 +1,40 @@
-// const DEFAULT_HIGHLIGHT_COLOR = 'yellow'
-// import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { from, of } from 'rxjs';
+import { concatMap, delay } from 'rxjs/operators';
 
+@Directive({
+  selector: '[appTypingAnimation]',
+  standalone: true,
+})
+export class TypingAnimationDirective implements OnChanges {
+  @Input() appTypingAnimation: string = '';
+  @Input() typingSpeed: number = 50; // Speed in ms between each character
 
-// @Directive({
-//   selector: '[appHighlight]'
-  
-// })
-// export class HighlightDirective {
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-//   @Input() highlightColor: string = DEFAULT_HIGHLIGHT_COLOR;
-//   constructor(private el: ElementRef) {}
-//   @HostListener('mouseenter') onMouseEnter(){
-//     this.highlight(this.highlightColor);
-//   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['appTypingAnimation']) {
+      this.typeText();
+    }
+  }
 
-//   @HostListener('mouseleave') onMouseLeave(){
-//     this.highlight(null);
-//   }
-
-//   private highlight(color: string | null) {
-//     this.el.nativeElement.style.backgroundColor = color;
-//   }
-
-// }
+  private typeText() {
+    const text = this.appTypingAnimation;
+    const textArray = text.split('');
+    this.renderer.setProperty(this.el.nativeElement, 'innerHTML', '');
+    
+    from(textArray)
+      .pipe(
+        concatMap(char => of(char).pipe(delay(this.typingSpeed)))
+      )
+      .subscribe({
+        next: (char) => {
+          this.renderer.setProperty(
+            this.el.nativeElement,
+            'innerHTML',
+            this.el.nativeElement.innerHTML + char
+          );
+        }
+      });
+  }
+}
