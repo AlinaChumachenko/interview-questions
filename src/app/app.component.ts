@@ -1,58 +1,36 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { TestComponent } from './components/test/test.component';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterOutlet } from '@angular/router';
+import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { LeftSideMenuComponent } from './components/left-side-menu/left-side-menu.component';
+import { CategoryComponent } from './components/category/category.component';
+import { DeleteConfirmationModalComponent } from './components/delete-confirmation-modal/delete-confirmation-modal.component';
+import { GenerateAnswerModalComponent } from './components/generate-answer-modal/generate-answer-modal.component';
+import { PreparationComponent } from './components/preparation/preparation.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
-// ⬇ Add Angular Material imports
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    RouterLink,
-    RouterLinkActive,
-    TestComponent,
-    CommonModule,    
+    RouterOutlet,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule,
-    MatButtonModule,
+    CategoryComponent,
+    DeleteConfirmationModalComponent,
+    GenerateAnswerModalComponent,
+    LeftSideMenuComponent,
+    PreparationComponent,
+    TopMenuComponent,
+    PageNotFoundComponent,
+    UserPanelComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']  // Make sure this is plural if you're using multiple stylesheets
+  styleUrl: './app.component.scss',
 })
-export class AppComponent { }
-
-
-
-// import { Component } from '@angular/core';
-// import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-// import { TestComponent } from './components/test/test.component';
-// import { CommonModule } from '@angular/common';
-// import { TodoService } from './services/todo.service';
-
-// @Component({
-//   selector: 'app-root',
-//   imports: [
-//     RouterOutlet, 
-//     RouterLink,
-//     RouterLinkActive,
-//     TestComponent,
-//   ],
-//   templateUrl: './app.component.html',
-//   styleUrl: './app.component.scss'
-// })
-// export class AppComponent {
-//   // title = 'interview-master';
-//   // messageFromParent = "I am you father"
-//   // messageFromChild = '';
-  
-//   // getMessageFromChild(message:string)  {
-//   //   this.messageFromChild = message;
-//   // }
-// }
+export class AppComponent {
+}
