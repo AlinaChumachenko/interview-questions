@@ -1,23 +1,17 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { httpInterceptorProviders } from './app.interceptors.provider';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
-    //  importProvidersFrom([BrowserAnimationsModule])
-    ]
+  providers: [
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    importProvidersFrom(HttpClientModule),
+    httpInterceptorProviders,
+  ],
 };
-
-
-
-// import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-// import { provideRouter } from '@angular/router';
-
-// import { routes } from './app.routes';
-
-// export const appConfig: ApplicationConfig = {
-//   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
-// };
