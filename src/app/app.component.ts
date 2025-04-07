@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { TestComponent } from './components/test/test.component';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
@@ -16,7 +15,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     RouterOutlet, 
     RouterLink,
     RouterLinkActive,
-    TestComponent,
     CommonModule,    
     MatSidenavModule,
     MatToolbarModule,
@@ -28,31 +26,3 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 })
 export class AppComponent { }
 
-
-
-// import { Component } from '@angular/core';
-// import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-// import { TestComponent } from './components/test/test.component';
-// import { CommonModule } from '@angular/common';
-// import { TodoService } from './services/todo.service';
-
-// @Component({
-//   selector: 'app-root',
-//   imports: [
-//     RouterOutlet, 
-//     RouterLink,
-//     RouterLinkActive,
-//     TestComponent,
-//   ],
-//   templateUrl: './app.component.html',
-//   styleUrl: './app.component.scss'
-// })
-// export class AppComponent {
-//   // title = 'interview-master';
-//   // messageFromParent = "I am you father"
-//   // messageFromChild = '';
-  
-//   // getMessageFromChild(message:string)  {
-//   //   this.messageFromChild = message;
-//   // }
-// }
