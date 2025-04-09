@@ -1,0 +1,32 @@
+.not-found-container {
+    text-align: center;
+    padding: 3rem;
+    font-family: 'Segoe UI', sans-serif;
+  
+    .status-code {
+      font-size: 8rem;
+      color: #ff6b6b;
+      margin: 0;
+    }
+  
+    .message {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+  
+    img {
+      max-width: 100%;
+      width: 300px;
+      border-radius: 1rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
