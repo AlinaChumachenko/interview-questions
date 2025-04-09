@@ -5,11 +5,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Question } from '../../models/question.model';
 import { MessageModalComponent } from '../../components/message-modal/message-modal.component';
 
-// interface Question {
-//   id: number;
-//   question: string;
-//   answer: string;
-// }
+
 @Component({
   selector: 'app-category',
   imports: [NgFor, MessageModalComponent, NgIf],

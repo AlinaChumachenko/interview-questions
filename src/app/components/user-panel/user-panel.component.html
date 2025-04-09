@@ -1,0 +1,7 @@
+<div class="user-panel">
+    <button class="button" (click)="openSignInModal()">Sign In</button>
+    <button class="button" (click)="openSignUpModal()">Sign Up</button>
+    
+</div>
+<app-sign-in *ngIf="showSignInModal" (closeSignInModal)="closeSignInModal()"></app-sign-in>
+<app-sign-up *ngIf="showSignUpModal" (closeSignUpModal)="closeSignUpModal()"></app-sign-up>

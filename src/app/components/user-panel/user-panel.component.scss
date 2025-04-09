@@ -1,0 +1,20 @@
+.user-panel {
+    display: flex;
+    gap: 20px;
+}
+
+.button {
+    font-size: 1.2rem;
+    padding: 8px;    
+    text-decoration: none;
+    color: #dee0cc;
+    background: #3c3c3c;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background: #605f5f;
+      color: #fff;
+    }
+  }
