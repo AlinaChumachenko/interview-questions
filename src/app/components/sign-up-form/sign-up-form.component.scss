@@ -1,0 +1,59 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Відстань між полями, як у .user-panel
+  padding: 20px;
+  background: #2a2a2a; // Темний фон, трохи темніший за #3c3c3c для контрасту
+  border-radius: 10px; // Округлі кути, як у кнопок
+  color: #dee0cc; // Колір тексту, як у .button
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; // Відстань між label та input
+}
+
+.form-label {
+  font-size: 1.1rem;
+  color: #dee0cc; // Світлий колір тексту
+}
+
+.form-input {
+  font-size: 1rem;
+  padding: 8px; // Як у кнопок
+  border: 1px solid #605f5f; // Сірий контур для контрасту з фоном
+  border-radius: 8px; // Трохи менші кути, ніж у кнопок, для ієрархії
+  background: #3c3c3c; // Той же фон, що у кнопок
+  color: #dee0cc; // Колір тексту
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:focus {
+    outline: none; // Прибираємо стандартний outline
+    border-color: #fff; // Білий контур при фокусі
+    background: #454545; // Легке підсвічування
+  }
+}
+
+// Стилі для кнопки вже є в .button, але додамо стан disabled
+.button {
+  font-size: 1.2rem;
+  padding: 8px;
+  text-decoration: none;
+  color: #dee0cc;
+  background: #3c3c3c;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: #605f5f;
+    color: #fff;
+  }
+
+  &:disabled {
+    background: #2a2a2a; // Темніший фон для неактивного стану
+    color: #888; // Тьмяний колір тексту
+    cursor: not-allowed;
+  }
+}

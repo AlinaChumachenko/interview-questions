@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { SignModalComponent } from '../sign-modal/sign-modal.component';
 
 @Component({
   selector: 'app-user-panel',
-  imports: [
-    SignModalComponent,
-    NgIf],
+  imports: [SignModalComponent],
   templateUrl: './user-panel.component.html',
   styleUrl: './user-panel.component.scss'
 })
@@ -14,21 +11,31 @@ export class UserPanelComponent {
   
   showModal: boolean = false;
   modalTitle: string = '';
-  modalContent: string = '';
+  formType: string = '';
+   
+
+  // openModal(type: string) {
+  //   this.showModal = true;
+  //   this.formType = type;
+  //   if (type === 'signIn') {
+  //     this.modalTitle = 'Sign In';
+      
+  //   } else if (type === 'signUp') {
+  //     this.modalTitle = 'Sign Up';
+     
+  //   }
 
   openModal(type: string) {
     this.showModal = true;
-    if (type === 'signIn') {
-      this.modalTitle = 'Sign In';
-      this.modalContent = 'Please enter your credentials to sign in.';
-    } else if (type === 'signUp') {
-      this.modalTitle = 'Sign Up';
-      this.modalContent = 'Please enter your details to sign up.';
-    }
+    this.formType = type;
+    this.modalTitle = type === 'signIn' ? 'Sign In' : 'Sign Up';
   }
+  
 
   closeModal() {
     this.showModal = false; 
+    this.modalTitle = '';
+    this.formType = '';
   }
 
 }

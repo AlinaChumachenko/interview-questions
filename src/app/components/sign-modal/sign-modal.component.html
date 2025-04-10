@@ -1,7 +1,16 @@
 <div class="modal-overlay">
     <div class="modal-content">
+        <button class="button close-button" (click)="close()" aria-label="Close">
+            &#10006;
+          </button>
       <h2>{{ title }}</h2>
-      <ng-content></ng-content> 
-      <button class="button" (click)="close()">Close</button>
+      <!-- <app-sign-in-form *ngIf="formType === 'signIn'"></app-sign-in-form>
+      <app-sign-up-form *ngIf="formType === 'signUp'"></app-sign-up-form> -->
+
+      @if (formType === 'signIn') {
+        <app-sign-in-form></app-sign-in-form>
+    } @else if (formType === 'signUp') {
+        <app-sign-up-form></app-sign-up-form>
+    }
     </div>
 </div>

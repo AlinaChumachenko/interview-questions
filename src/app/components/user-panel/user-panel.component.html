@@ -3,8 +3,16 @@
     <button class="button" (click)="openModal('signUp')">Sign Up</button>
 </div>
 
-<app-sign-modal *ngIf="showModal" 
+<!-- <app-sign-modal *ngIf="showModal" 
   [title]="modalTitle" 
-  [content]="modalContent" 
+  [formType]="formType"  
   (closeModal)="closeModal()">
-</app-sign-modal>
+</app-sign-modal> -->
+
+@if (showModal) {
+  <app-sign-modal 
+    [title]="modalTitle" 
+    [formType]="formType"  
+    (closeModal)="closeModal()">
+  </app-sign-modal>
+}

@@ -12,6 +12,8 @@
 }
 
 .modal-content {
+  position: relative;
+  text-align: center;
   background-color: #3c3c3c;
   padding: 20px;
   border-radius: 10px;
@@ -34,5 +36,14 @@
   &:hover {
     background: #605f5f;
     color: #fff;
+  }
+
+  &.close-button { // Додаємо специфічний клас для кнопки закриття
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px; // Зменшуємо padding для компактності
+    min-width: 0; // Щоб кнопка не розтягувалася
+    line-height: 1; // Для коректного центрування ✗
   }
 }

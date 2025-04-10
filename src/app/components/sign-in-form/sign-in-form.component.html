@@ -1,0 +1,15 @@
+<form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+     
+    <div class="form-group">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-input" type="email" id="email" formControlName="email" />
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-input" type="password" id="password" formControlName="password" />
+    </div>
+  
+    <button class="button" type="submit" [disabled]="signInForm.invalid">Submit</button>
+  </form>
+
