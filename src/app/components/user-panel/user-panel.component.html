@@ -1,17 +1,18 @@
 <div class="user-panel">
+  @if (authService.isAuthenticated()) {
+    <button class="button">
+      Welcome,{{ authService.getUserName() }}
+    </button>
+    <button class="button" (click)="authService.logout()">Log out</button>
+  } @else {
     <button class="button" (click)="openModal('signIn')">Sign In</button>
     <button class="button" (click)="openModal('signUp')">Sign Up</button>
+  }
 </div>
-
-<!-- <app-sign-modal *ngIf="showModal" 
-  [title]="modalTitle" 
-  [formType]="formType"  
-  (closeModal)="closeModal()">
-</app-sign-modal> -->
 
 @if (showModal) {
   <app-sign-modal 
-    [title]="modalTitle" 
+    [title]="modalTitle"    
     [formType]="formType"  
     (closeModal)="closeModal()">
   </app-sign-modal>

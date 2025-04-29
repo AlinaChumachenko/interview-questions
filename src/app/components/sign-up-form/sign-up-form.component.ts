@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -9,10 +10,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './sign-up-form.component.scss'
 })
 export class SignUpFormComponent {
-
   signUpForm: FormGroup;
-
-    constructor(private fb: FormBuilder) {
+  loading = false;
+  @Output() authSuccess = new EventEmitter<void>();
+    constructor(private fb: FormBuilder, private authService: AuthService) {
       
       this.signUpForm = this.fb.group({
         username: ['', Validators.required],
@@ -23,7 +24,20 @@ export class SignUpFormComponent {
   
     onSubmit() {
       if (this.signUpForm.valid) {
-        console.log('Form submitted', this.signUpForm.value);
+        this.loading = true;
+        const { username, email, password } = this.signUpForm.value;
+        this.authService.signUp(username, email, password).subscribe({
+          next: (response) => {
+            console.log('User registered success', response);
+            this.loading = false;
+            this.authService.saveUserName(username);
+            this.authSuccess.emit();
+          },
+          error: (error) => {
+            console.error('Registration failed', error);
+            this.loading = false;
+          }
+        })
       }
     }
   }

@@ -20,4 +20,8 @@ export class SignModalComponent {
   close() {
     this.closeModal.emit(); 
   }
+
+  onAuthSuccess() {
+    this.close(); // 🔥 Просто закриваємо модалку
+  }
 }
