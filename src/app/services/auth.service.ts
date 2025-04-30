@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://your-api.com/api';
+  private apiUrl = 'http://localhost:3000/api';
   private tokenKey = 'auth_token';
   private userKey = 'user_name'; 
 
@@ -17,37 +17,22 @@ export class AuthService {
  
 
   signUp(username: string, email: string, password: string): Observable<any> {
-
-    const fakeResponse = {token: 'fake-jwt-token', message: 'User registered successfully'};
-    return of(fakeResponse).pipe(
-      tap(response => {
+    return this.http.post(`${this.apiUrl}/register`, { username, email, password}).pipe(
+      tap((response: any) => {
         this.saveToken(response.token); 
         this.saveUserName(username);  
         this.saveUserRecord(email, username);  
       }))
 
-    // return this.http.post(`${this.apiUrl}/register`, { username, email, password});
   }
 
   signIn(email: string, password: string): Observable<any> {
-    const username = this.getUserNameByEmail(email);
-    if(!username) {
-      return new Observable(observer =>
-        observer.error({message:'User not registered. Please sign up first.'})
-      )
-    }
-
-    const fakeResponse = {token: 'fake-jwt-token', username: username};
-    return of(fakeResponse).pipe(
-      tap(response => 
-        {this.saveToken(response.token);
-        this.saveUserName(response.username);})
-
+    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap((response: any) => {
+        this.saveToken(response.token);
+        this.saveUserName(response.username);
+      })
     );
-
-    // return this.http.post(`${this.apiUrl}/login`, { email, password}).pipe(
-    //   tap((response: any) => this.saveToken(response.token))
-    // )
   }
 
   private saveUserRecord(email: string, username: string) {
