@@ -2,22 +2,31 @@
 <input
   [value]="newQuestionText"
   (input)="newQuestionText = $any($event.target).value"
-  placeholder="Введіть нове питання"
+  placeholder="Introduce new nutrition"
   class="form-input"
 />
-<button class="button" (click)="addQuestion()">Add question</button>
+@if (!isAuthenticated) {
+    <button class="button" (click)="openModal() ">Add question</button>
+} @else {
+    <button class="button" (click)="addQuestion()">Add question</button>
+}
 <ul class="question-list">
     @for (question of questions; track question; let i = $index) {
         <li class="question" >
-            <div class="question-content" (click)="openModal()">
+                <div class="question-content" (click)="openModal()">
                 <p><strong>{{ i + 1 }}.</strong> {{ question.question }}</p>
+            @if (isAuthenticated) {
                 <div class="question-actions">
                   <button class="button" (click)="deleteQuestion(question.id)">Delete question</button>
                   <button class="button" >Create answer</button>
                 </div>
+            }
             </div>
+        
         </li>
     }
 </ul>
 
-<app-message-modal *ngIf="showModal" (closeModal)="closeModal()"></app-message-modal>
+@if (showModal) {
+    <app-message-modal (closeModal)="closeModal()"></app-message-modal>
+  }

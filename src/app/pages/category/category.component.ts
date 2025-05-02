@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService, Question } from '../../services/category.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-// import { Question } from '../../models/question.model';
 import { MessageModalComponent } from '../../components/message-modal/message-modal.component';
 import { AuthService } from '../../services/auth.service';
 
@@ -23,6 +22,7 @@ export class CategoryComponent implements OnInit{
   questions: Question[] = [];
   showModal: boolean = false;
   newQuestionText = '';
+  isAuthenticated: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +32,7 @@ export class CategoryComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {        
+      this.isAuthenticated = this.authService.isAuthenticated();
         this.route.paramMap.subscribe((params) => {
         this.category = params.get('name')!;    
         this.loadQuestions();
