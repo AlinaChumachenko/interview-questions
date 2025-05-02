@@ -1,59 +1,95 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; // Відстань між полями, як у .user-panel
-    padding: 20px;
-    background: #2a2a2a; // Темний фон, трохи темніший за #3c3c3c для контрасту
-    border-radius: 10px; // Округлі кути, як у кнопок
-    color: #dee0cc; // Колір тексту, як у .button
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  padding: 20px;
+  background: #2a2a2a; 
+  border-radius: 10px; 
+  color: #dee0cc; 
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  color: #dee0cc; 
+}
+
+.form-input {
+  font-size: 1rem;
+  padding: 8px; 
+  border: 1px solid #605f5f; 
+  border-radius: 8px;
+  background: #3c3c3c; 
+  color: #dee0cc; 
+  transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    outline: none;
+    border-color: #fff; 
+    background: #454545; 
   }
+}
+
+.password-container {
+  position: relative;
   
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; // Відстань між label та input
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+ 
+}
+.mat-icon {
+  height: 21px;
+    width: 15px;
+}
+
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  padding: 5px;
+  transform: translateY(-50%);
+  font-size: 1.2rem; 
+  color: #dee0cc; 
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+ 
+}
+
+.toggle-password:hover {
+  color: #fff; 
+}
+
+
+.button {
+  font-size: 1.2rem;
+  padding: 8px;
+  text-decoration: none;
+  color: #dee0cc;
+  background: #3c3c3c;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: #605f5f;
+    color: #fff;
   }
-  
-  .form-label {
-    font-size: 1.1rem;
-    color: #dee0cc; // Світлий колір тексту
+
+  &:disabled {
+    background: #2a2a2a; 
+    color: #888; 
+    cursor: not-allowed;
   }
-  
-  .form-input {
-    font-size: 1rem;
-    padding: 8px; // Як у кнопок
-    border: 1px solid #605f5f; // Сірий контур для контрасту з фоном
-    border-radius: 8px; // Трохи менші кути, ніж у кнопок, для ієрархії
-    background: #3c3c3c; // Той же фон, що у кнопок
-    color: #dee0cc; // Колір тексту
-    transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
-  
-    &:focus {
-      outline: none; // Прибираємо стандартний outline
-      border-color: #fff; // Білий контур при фокусі
-      background: #454545; // Легке підсвічування
-    }
-  }
-  
-  // Стилі для кнопки вже є в .button, але додамо стан disabled
-  .button {
-    font-size: 1.2rem;
-    padding: 8px;
-    text-decoration: none;
-    color: #dee0cc;
-    background: #3c3c3c;
-    border-radius: 10px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-    cursor: pointer;
-  
-    &:hover {
-      background: #605f5f;
-      color: #fff;
-    }
-  
-    &:disabled {
-      background: #2a2a2a; // Темніший фон для неактивного стану
-      color: #888; // Тьмяний колір тексту
-      cursor: not-allowed;
-    }
-  }
+}

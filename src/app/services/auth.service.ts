@@ -12,8 +12,11 @@ export class AuthService {
   private tokenKey = 'auth_token';
   private userKey = 'user_name'; 
 
+  
+
   constructor(private http: HttpClient) { }
 
+  
  
 
   signUp(username: string, email: string, password: string): Observable<any> {
@@ -53,7 +56,9 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.getToken();
+    
   }
+  
 
   logout() {
     localStorage.removeItem(this.tokenKey);

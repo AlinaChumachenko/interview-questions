@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
+
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-sign-in-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatIconModule],
   standalone: true,
   templateUrl: './sign-in-form.component.html',  
   styleUrl: './sign-in-form.component.scss'
@@ -12,13 +16,22 @@ import { AuthService } from '../../services/auth.service';
 export class SignInFormComponent {
   signInForm: FormGroup;
   loading = false;
+  showPassword = false;
   @Output() authSuccess = new EventEmitter<void>();
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService,
+    private toastr: ToastrService
+    ) {
     
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit() {
@@ -32,9 +45,13 @@ export class SignInFormComponent {
           this.authSuccess.emit();
         },
         error:(error) => {
-          console.error('Login failed', error);
-          alert(error.message);
           this.loading = false;
+
+          if (error.status === 401) {
+            this.toastr.error('User not found or incorrect password', 'Login Error');
+          } else {
+            this.toastr.error('An unexpected error occurred. Please try again later.', 'Error');
+          }
         }
       })
      

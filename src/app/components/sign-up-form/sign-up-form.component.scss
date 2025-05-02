@@ -27,12 +27,48 @@
   background: #3c3c3c; 
   color: #dee0cc; 
   transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     outline: none;
     border-color: #fff; 
     background: #454545; 
   }
+}
+
+.password-container {
+  position: relative;
+  
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+ 
+}
+.mat-icon {
+  height: 21px;
+    width: 15px;
+}
+
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  padding: 5px;
+  transform: translateY(-50%);
+  font-size: 1.2rem; 
+  color: #dee0cc; 
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+ 
+}
+
+.toggle-password:hover {
+  color: #fff; 
 }
 
 
