@@ -8,6 +8,7 @@ export interface Question {
   question: string;
   answer: string;
   category: string;
+  showAnswer?: boolean;
 }
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class CategoryService {
 
   deleteQuestion(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  updateAnswer(id: string, answer: string): Observable<Question> {
+    return this.http.put<Question>(`${this.apiUrl}/${id}/answer`, { answer });
   }
 }

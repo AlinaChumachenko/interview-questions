@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-message-modal',
   imports: [],
+  standalone: true,
   templateUrl: './message-modal.component.html',
   styleUrl: './message-modal.component.scss'
 })

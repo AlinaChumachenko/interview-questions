@@ -4,11 +4,20 @@ import { CategoryService, Question } from '../../services/category.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { MessageModalComponent } from '../../components/message-modal/message-modal.component';
 import { AuthService } from '../../services/auth.service';
+import { AiService } from '../../services/ai.service';
+import { AnswerModalComponent } from '../../components/answer-modal/answer-modal.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-category',
-  imports: [NgFor, MessageModalComponent, NgIf, CommonModule],
+  imports: [
+    NgFor, 
+    NgIf,
+    MatIconModule, 
+    CommonModule,
+    AnswerModalComponent,
+    MessageModalComponent],
   standalone: true,
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss'
@@ -21,27 +30,37 @@ export class CategoryComponent implements OnInit{
   category: string = '';
   questions: Question[] = [];
   showModal: boolean = false;
+  showAnswerModal: boolean = false;
+  selectedQuestion: Question | null = null;
+  aiAnswer: string = '';
   newQuestionText = '';
-  isAuthenticated: boolean = false;
+  confirmDeleteId: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private authService: AuthService,
+    private aiService: AiService,
   
-  ) { }
+  ) {}
 
   ngOnInit(): void {        
-      this.isAuthenticated = this.authService.isAuthenticated();
+      // this.isAuthenticated = this.authService.isAuthenticated();
         this.route.paramMap.subscribe((params) => {
         this.category = params.get('name')!;    
         this.loadQuestions();
       });    
   }
 
-  loadQuestions() { 
-    this.categoryService.getQuestions().subscribe((data) =>{
-      this.questions = data.filter(q => q.category === this.category)
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  loadQuestions() {
+    this.categoryService.getQuestions().subscribe((data) => {
+      this.questions = data
+        .filter(q => q.category === this.category)
+        .map(q => ({ ...q, showAnswer: false }));
     });
   }
   toUpperCase(str: string): string {
@@ -58,6 +77,28 @@ export class CategoryComponent implements OnInit{
     this.showModal = false;
   }
 
+  openAnswerModal(question: Question) {
+    this.selectedQuestion = question;
+    this.showAnswerModal = true;
+    
+ }
+
+  closeAnswerModal() {
+    this.showAnswerModal = false;
+    this.selectedQuestion = null;
+  }
+
+  onAnswerSubmitted(answer: string) {
+    if (this.selectedQuestion) {
+      const questionToUpdate = this.selectedQuestion; 
+  
+      this.categoryService.updateAnswer(questionToUpdate.id, answer).subscribe((updatedQuestion) => {
+        questionToUpdate.answer = updatedQuestion.answer;
+        this.closeAnswerModal(); 
+      });
+    }
+  }
+
   addQuestion() {
 
     if (!this.newQuestionText.trim()) return;
@@ -68,10 +109,20 @@ export class CategoryComponent implements OnInit{
 
   }
   
-  deleteQuestion(id: string) {
-    this.categoryService.deleteQuestion(id).subscribe(() => {
-      this.questions = this.questions.filter(q => q.id !== id);
+  deleteConfirmed() {
+    if (!this.confirmDeleteId) return;
+  
+    this.categoryService.deleteQuestion(this.confirmDeleteId).subscribe(() => {
+      this.questions = this.questions.filter(q => q.id !== this.confirmDeleteId);
+      this.confirmDeleteId = null;
     });
+  }
+
+  generateAnswer(question: Question) {
+    this.aiService.generateAnswer(question.question).subscribe((res) => {
+      // this.aiAnswer = res.answer;
+      this.showAnswerModal = true;
+    })
   }
   
 

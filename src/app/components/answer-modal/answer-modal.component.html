@@ -1,0 +1,30 @@
+<div class="modal-overlay">
+    <div class="modal-content">
+      <h3>Answer the question</h3>
+  
+      @if (!aiAnswerGenerated) {
+        <p>How would you like to answer?</p>
+        <div class="options">
+          <button class="button" (click)="generateWithAI()">Generate with AI</button>
+          <textarea 
+            [(ngModel)]="manualAnswer"
+            placeholder="Or type your answer here..."
+            class="form-input"
+            rows="4"
+          ></textarea>
+          <div class="buttons-row">
+            <button class="button" (click)="submitManualAnswer()">Submit Answer</button>
+            <button class="button" (click)="close()">Close</button>
+          </div>
+        </div>
+      } @else {
+        <p><strong>AI Answer:</strong></p>
+        <p class="ai-response">{{ aiAnswer }}</p>
+        <div class="buttons-row">
+          <button class="button" (click)="confirmAIAnswer()">Use this answer</button>
+          <button class="button" (click)="close()">Close</button>
+        </div>
+      }
+    </div>
+  </div>
+  

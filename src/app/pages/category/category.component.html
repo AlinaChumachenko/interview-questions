@@ -1,32 +1,82 @@
-<h2>{{ toUpperCase(category) }}</h2>
-<input
-  [value]="newQuestionText"
-  (input)="newQuestionText = $any($event.target).value"
-  placeholder="Introduce new nutrition"
-  class="form-input"
-/>
-@if (!isAuthenticated) {
-    <button class="button" (click)="openModal() ">Add question</button>
-} @else {
-    <button class="button" (click)="addQuestion()">Add question</button>
-}
-<ul class="question-list">
-    @for (question of questions; track question; let i = $index) {
-        <li class="question" >
-                <div class="question-content" (click)="openModal()">
-                <p><strong>{{ i + 1 }}.</strong> {{ question.question }}</p>
-            @if (isAuthenticated) {
-                <div class="question-actions">
-                  <button class="button" (click)="deleteQuestion(question.id)">Delete question</button>
-                  <button class="button" >Create answer</button>
-                </div>
-            }
-            </div>
-        
-        </li>
+<div class="category-container">
+    <h2>{{ toUpperCase(category) }}</h2>
+  
+    <input
+      [value]="newQuestionText"
+      (input)="newQuestionText = $any($event.target).value"
+      placeholder="Introduce new nutrition"
+      class="form-input"
+    />
+  
+    @if (!isAuthenticated) {
+      <button class="button" (click)="openModal()">Add question</button>
+    } @else {
+      <button class="button" (click)="addQuestion()">Add question</button>
     }
-</ul>
-
-@if (showModal) {
-    <app-message-modal (closeModal)="closeModal()"></app-message-modal>
-  }
+  
+    <ul class="question-list">
+      @for (question of questions; track question; let i = $index) {
+        <li class="question">
+          <div class="question-content">
+            <p><strong>{{ i + 1 }}.</strong> {{ question.question }}</p>
+  
+            @if (isAuthenticated) {
+              <div class="question-actions">
+                <!-- Delete button -->
+                <mat-icon class="icon-button" (click)="confirmDeleteId = question.id">delete</mat-icon>
+  
+                <!-- Answer logic -->
+                @if (!question.answer) {
+                  <mat-icon class="icon-button" (click)="openAnswerModal(question)">add</mat-icon>
+                  } @else {
+                    <mat-icon 
+                        class="toggle-answer" 
+                        (click)="question.showAnswer = !question.showAnswer">
+                        {{ question.showAnswer ? 'visibility_off' : 'visibility' }}
+                    </mat-icon>
+                 }
+              </div>
+              
+            }
+            
+          </div>
+             <!-- Display answer -->
+             @if (question.showAnswer) {
+              <div class="answer-content">
+                  <div class="answer-box">
+                <p>{{ question.answer }}</p></div>
+                <mat-icon class="icon-button" (click)="openAnswerModal(question)">edit</mat-icon>
+              </div>
+            }
+         
+         
+        </li>
+        
+      }
+    </ul>
+  
+    @if (confirmDeleteId) {
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <p>Are you sure you want to delete this question?</p>
+          <div class="modal-actions">
+            <button class="button" (click)="deleteConfirmed()">Yes, delete</button>
+            <button class="button" (click)="confirmDeleteId = null">No, cancel</button>
+          </div>
+        </div>
+      </div>
+    }
+  
+    @if (showModal) {
+      <app-message-modal (closeModal)="closeModal()"></app-message-modal>
+    }
+  
+    @if (showAnswerModal && selectedQuestion) {
+      <app-answer-modal
+        [question]="selectedQuestion"
+        (closeModal)="closeAnswerModal()"
+        (onAnswerSubmitted)="onAnswerSubmitted($event)"
+      ></app-answer-modal>
+    }
+  </div>
+  

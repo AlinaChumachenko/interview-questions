@@ -8,24 +8,18 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3000/api/auth';
   private tokenKey = 'auth_token';
   private userKey = 'user_name'; 
 
-  
-
   constructor(private http: HttpClient) { }
-
-  
- 
-
-  signUp(username: string, email: string, password: string): Observable<any> {
+ signUp(username: string, email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, { username, email, password}).pipe(
       tap((response: any) => {
         this.saveToken(response.token); 
         this.saveUserName(username);  
         this.saveUserRecord(email, username);  
-      }))
+    }))
 
   }
 
@@ -42,9 +36,9 @@ export class AuthService {
     localStorage.setItem(`user_${email}`, username);
   } 
 
-  private getUserNameByEmail(email: string): string | null {
-    return localStorage.getItem(`user_${email}`);
-  }
+  // private getUserNameByEmail(email: string): string | null {
+  //   return localStorage.getItem(`user_${email}`);
+  // }
 
   private saveToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
@@ -59,7 +53,6 @@ export class AuthService {
     
   }
   
-
   logout() {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey); 
