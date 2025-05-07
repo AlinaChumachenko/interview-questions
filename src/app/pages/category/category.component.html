@@ -31,7 +31,7 @@
                   } @else {
                     <mat-icon 
                         class="toggle-answer" 
-                        (click)="question.showAnswer = !question.showAnswer">
+                        (click)="toggleAnswer(question)">
                         {{ question.showAnswer ? 'visibility_off' : 'visibility' }}
                     </mat-icon>
                  }

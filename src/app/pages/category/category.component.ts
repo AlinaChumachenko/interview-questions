@@ -57,11 +57,20 @@ export class CategoryComponent implements OnInit{
   }
 
   loadQuestions() {
+    const storedStates = JSON.parse(localStorage.getItem('answerStates') || '{}');
     this.categoryService.getQuestions().subscribe((data) => {
       this.questions = data
         .filter(q => q.category === this.category)
-        .map(q => ({ ...q, showAnswer: false }));
+        .map(q => ({ ...q, showAnswer:storedStates[q.id] ?? false }));
     });
+  }
+
+  toggleAnswer(question: Question) {
+    question.showAnswer = !question.showAnswer;
+    const storedStates = JSON.parse(localStorage.getItem('answerStates') || '{}');
+    storedStates[question.id] = question.showAnswer;
+    localStorage.setItem('answerStates', JSON.stringify(storedStates));
+
   }
   toUpperCase(str: string): string {
     return str.toUpperCase();
