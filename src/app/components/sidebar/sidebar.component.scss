@@ -27,6 +27,11 @@
     flex-direction: column;
     padding: 20px;
   }
+
+  .nav-item.active {
+    background: #605f5f;
+    color: #fff;
+  }
   
   .nav-item {
     font-size: 1.2rem;

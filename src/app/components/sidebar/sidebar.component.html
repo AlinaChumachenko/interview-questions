@@ -3,9 +3,18 @@
       <h2>Categories</h2>
     </div>
     <nav class="nav-list">
-      <a routerLink="/category/angular" class="nav-item">Angular</a>
-      <a routerLink="/category/typescript" class="nav-item">Typescript</a>
-      <a routerLink="/category/javascript" class="nav-item">Javascript</a>
-      <a routerLink="/category/rxjs" class="nav-item">RxJs</a>
+      <a 
+      routerLink="/category/angular" 
+      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
+      class="nav-item">Angular</a>
+      <a routerLink="/category/typescript" 
+      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
+      class="nav-item">Typescript</a>
+      <a routerLink="/category/javascript" 
+      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
+      class="nav-item">Javascript</a>
+      <a routerLink="/category/rxjs" 
+      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
+      class="nav-item">RxJs</a>
     </nav>
 </aside>
