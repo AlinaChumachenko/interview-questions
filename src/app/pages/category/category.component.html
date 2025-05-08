@@ -37,19 +37,25 @@
                  }
               </div>
               
-            }
+            } @else {
+              <div class="question-actions">
+              <!-- Delete button -->
+              <mat-icon class="icon-button" (click)="openModal()">delete</mat-icon>
+              <mat-icon class="icon-button" (click)="openModal()">add</mat-icon>
+            </div>
+          }
             
           </div>
              <!-- Display answer -->
+             @if (isAuthenticated) {
              @if (question.showAnswer) {
               <div class="answer-content">
                   <div class="answer-box">
                 <p>{{ question.answer }}</p></div>
                 <mat-icon class="icon-button" (click)="openAnswerModal(question)">edit</mat-icon>
               </div>
+             }
             }
-         
-         
         </li>
         
       }
