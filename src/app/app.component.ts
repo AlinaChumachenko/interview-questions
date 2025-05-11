@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HomeComponent } from './pages/home/home.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { MessageModalComponent } from './components/message-modal/message-modal.component';
+// import { NotFoundComponent } from './components/not-found/not-found.component';
+// import { HomeComponent } from './pages/home/home.component';
+// import { CategoryComponent } from './pages/category/category.component';
+// import { MessageModalComponent } from './components/message-modal/message-modal.component';
 
 
 @Component({
@@ -14,9 +14,9 @@ import { MessageModalComponent } from './components/message-modal/message-modal.
   imports: [
     HeaderComponent,
     SidebarComponent,
-    NotFoundComponent,
-    HomeComponent,
-    CategoryComponent,
+    // NotFoundComponent,
+    // HomeComponent,
+    // CategoryComponent,
     RouterOutlet, 
     // MessageModalComponent,
     // RouterLink,

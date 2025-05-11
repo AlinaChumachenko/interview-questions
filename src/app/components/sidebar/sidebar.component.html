@@ -3,18 +3,55 @@
       <h2>Categories</h2>
     </div>
     <nav class="nav-list">
-      <a 
-      routerLink="/category/angular" 
-      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
-      class="nav-item">Angular</a>
-      <a routerLink="/category/typescript" 
-      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
-      class="nav-item">Typescript</a>
-      <a routerLink="/category/javascript" 
-      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
-      class="nav-item">Javascript</a>
-      <a routerLink="/category/rxjs" 
-      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" 
-      class="nav-item">RxJs</a>
+      @for (category of categories; track category; let i = $index) {
+        <div class="nav-content">
+          <a 
+            [routerLink]="['/category', category.name]"
+            class="nav-item"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            {{ category.name }}
+          </a>
+          <mat-icon 
+            class="icon-button delete-icon" 
+            (click)="confirmDeleteCategory = category"
+          >
+            delete
+          </mat-icon>
+        </div>
+      }
+  <div
+        class="nav-item nav-item-add"
+        matTooltip="Type a category and press Enter to add"
+        [matTooltipShowDelay]="500"
+        matTooltipPosition="below"
+        matTooltipShowOn="focus mouseenter"
+      >
+        <input 
+        [(ngModel)]="newCategory" 
+        class="nav-input" placeholder="New category" 
+        (keydown.enter)="addCategory()"
+        
+        />
+      </div>
     </nav>
+    
+
 </aside>
+
+
+@if (confirmDeleteCategory) {
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <p>Are you sure you want to delete this category?</p>
+      <div class="modal-actions">
+        <button class="button" (click)="deleteCategory(confirmDeleteCategory)">Yes, delete</button>
+        <button class="button" (click)="confirmDeleteCategory = null">No, cancel</button>
+      </div>
+    </div>
+  </div>
+}
+
+
+

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { Category } from '../models/category.model';
 // import { Question } from '../models/question.model';
 
 export interface Question {
@@ -34,5 +35,17 @@ export class CategoryService {
 
   updateAnswer(id: string, answer: string): Observable<Question> {
     return this.http.put<Question>(`${this.apiUrl}/${id}/answer`, { answer });
+  }
+
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>('http://localhost:3000/api/categories');
+  }
+
+  addCategory(name: string): Observable<Category> {
+    return this.http.post<Category>('http://localhost:3000/api/categories', { name });
+  }
+
+  deleteCategory(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:3000/api/categories/${id}`);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService, Question } from '../../services/category.service';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MessageModalComponent } from '../../components/message-modal/message-modal.component';
 import { AuthService } from '../../services/auth.service';
 import { AiService } from '../../services/ai.service';
@@ -12,8 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-category',
   imports: [
-    NgFor, 
-    NgIf,
+    // NgFor, 
+    // NgIf,
     MatIconModule, 
     CommonModule,
     AnswerModalComponent,
