@@ -65,7 +65,7 @@
   }
   
   .delete-icon:hover {
-    color: #bdc47d;
+    color: #a2a48e;
   }
   
 
@@ -74,8 +74,10 @@
     gap: 10px;
     justify-content: center;
     align-items: center 
+    
   }
-
+ 
+ 
   .icon-button {
     font-size: 24px;
     width: 24px;
@@ -170,4 +172,8 @@
       background: #605f5f;
       color: #fff;
     }
+  }
+
+  .container-color {
+    background-color: #a3be85;
   }

@@ -1,21 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+// 🔼 Спочатку ВСІ @use
+@use '@angular/material' as mat;
 @use 'fonts';
+
 :root {
-    // --primary-color: #3c3c3c;
-    // --secondary-color: #555;
     --background-color: #dee0cc;
     --font-color: #3c3c3c;
+  
+    @include mat.tooltip-overrides((
+      container-color: #dee0cc,
+      supporting-text-color: #3c3c3c,
+      supporting-text-size: 14px,
+      container-shape: 8px
+    ));
+  }
+
+   
+
+html, body {
+  height: 100%;
 }
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: 'JetBrains Mono', 'Roboto', "Helvetica Neue", sans-serif;
-    background-color: var(--background-color); 
-    color: var(--font-color);}
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Roboto', "Helvetica Neue", sans-serif;
+  background-color: var(--background-color); 
+  color: var(--font-color);
+}
 
 ul {
-    list-style-type: none;
-    padding-left: 0;
-}  
-
+  list-style-type: none;
+  padding-left: 0;
+}
