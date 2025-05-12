@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
   }
-
   
   .nav-list {
     display: flex;
@@ -28,57 +27,49 @@
     padding: 20px;
   }
 
-  .nav-content {
+  
+  .nav-item-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #3c3c3c;
-    margin-bottom: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
     padding: 0 12px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-   
-    a.nav-item {
-      flex: 1;
-      padding: 15px 0;
-      text-decoration: none;
-      color: #dee0cc;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      background: transparent;
-      margin: 0;
-    }
-  
-    .delete-icon {
-      font-size: 20px;
-      color: #aaa;
-      cursor: pointer;
-      transition: color 0.2s;
-  
-      &:hover {
-        color: #f44336;
-      }
-    }
+    transition: background 0.3s ease-in-out;
   }
   
-  
-  
-
-  // .nav-item.active {
-  //   background: #605f5f;
-  //   color: #fff;
-  // }
-  
-  
-  
-  .nav-content:hover,
-  .nav-content:focus {
+  .nav-item-wrapper:hover {
     background: #605f5f;
-    color: #fff;
   }
+
+  .nav-item-wrapper.active {
+    background: #605f5f;
+  }
+  
+  .nav-item {
+    flex: 1;
+    padding: 15px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #dee0cc;
+    font-size: 1.2rem;
+  }
+  
+  
+  .delete-icon {
+    font-size: 20px;
+    color: #dee0cc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .delete-icon:hover {
+    color: #bdc47d;
+  }
+  
 
   .nav-item-add {
-    
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -89,7 +80,7 @@
     font-size: 24px;
     width: 24px;
     height: 24px;
-    color: #fff;
+    color: #dee0cc;
     overflow: visible !important;
     cursor: pointer;
     padding: 0; 

@@ -4,17 +4,18 @@
     </div>
     <nav class="nav-list">
       @for (category of categories; track category; let i = $index) {
-        <div class="nav-content">
-          <a 
+        <div class="nav-item-wrapper"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }">
+          <a
             [routerLink]="['/category', category.name]"
             class="nav-item"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: false }"
+            
           >
             {{ category.name }}
           </a>
-          <mat-icon 
-            class="icon-button delete-icon" 
+          <mat-icon
+            class="icon-button delete-icon"
             (click)="confirmDeleteCategory = category"
           >
             delete
@@ -22,19 +23,19 @@
         </div>
       }
   <div
-        class="nav-item nav-item-add"
-        matTooltip="Type a category and press Enter to add"
-        [matTooltipShowDelay]="500"
-        matTooltipPosition="below"
-        matTooltipShowOn="focus mouseenter"
-      >
-        <input 
-        [(ngModel)]="newCategory" 
-        class="nav-input" placeholder="New category" 
-        (keydown.enter)="addCategory()"
-        
-        />
-      </div>
+      class="nav-item nav-item-add"
+      matTooltip="Type a category and press Enter to add"
+      [matTooltipShowDelay]="500"
+      matTooltipPosition="below"
+      matTooltipShowOn="focus mouseenter"
+    >
+      <input 
+      [(ngModel)]="newCategory" 
+      class="nav-input" placeholder="New category" 
+      (keydown.enter)="addCategory()"
+      
+      />
+    </div>
     </nav>
     
 
