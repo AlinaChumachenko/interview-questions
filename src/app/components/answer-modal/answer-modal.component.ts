@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AiService } from  '../../services/ai.service';
 import { FormsModule } from '@angular/forms';
 import { Question } from '../../services/category.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-answer-modal',
-  imports: [FormsModule],
+  imports: [FormsModule, TranslateModule],
   standalone: true,
   templateUrl: './answer-modal.component.html',
   styleUrl: './answer-modal.component.scss'
@@ -21,7 +23,14 @@ export class AnswerModalComponent implements OnInit {
   manualAnswer: string = '';
   aiAnswerGenerated: boolean = false;
 
-  constructor(private aiService: AiService) {}
+  constructor(
+    private aiService: AiService,
+    private toastr: ToastrService,
+    private translate: TranslateService) {
+      translate.addLangs(['en', 'uk']);
+      translate.setDefaultLang('en');
+      translate.use('uk');
+    }
 
   ngOnInit() {
     if (this.question?.answer) {

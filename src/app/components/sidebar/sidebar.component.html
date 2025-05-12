@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <div class="sidebar-title">
-      <h2>Categories</h2>
+      <h2>{{ 'CATEGORIES_TITLE' | translate }}</h2>
     </div>
     <nav class="nav-list">
       @for (category of categories; track category; let i = $index) {
@@ -24,14 +24,15 @@
       }
   <div
       class="nav-item nav-item-add"
-      matTooltip="Type a category and press Enter to add"
+      [matTooltip]="'ADD_CATEGORY' | translate"
       [matTooltipShowDelay]="500"
       matTooltipPosition="below"
       matTooltipShowOn="focus mouseenter"
     >
       <input 
-      [(ngModel)]="newCategory" 
-      class="nav-input" placeholder="New category" 
+      [(ngModel)]="newCategory"  
+      class="nav-input" 
+      [placeholder]="'CATEGORIES_PLACEHOLDER' | translate" 
       (keydown.enter)="addCategory()"
       
       />
@@ -45,10 +46,10 @@
 @if (confirmDeleteCategory) {
   <div class="modal-overlay">
     <div class="modal-content">
-      <p>Are you sure you want to delete this category?</p>
+      <p>{{'DELETE_CONFIRM' | translate}}</p>
       <div class="modal-actions">
-        <button class="button" (click)="deleteCategory(confirmDeleteCategory)">Yes, delete</button>
-        <button class="button" (click)="confirmDeleteCategory = null">No, cancel</button>
+        <button class="button" (click)="deleteCategory(confirmDeleteCategory)">{{'YES' | translate}}</button>
+        <button class="button" (click)="confirmDeleteCategory = null">{{'NO' | translate}}</button>
       </div>
     </div>
   </div>

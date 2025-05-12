@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Question } from '../../models/question.model';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,6 +20,7 @@ import { Question } from '../../models/question.model';
     RouterModule,
     CommonModule,
     MatIconModule,
+    TranslateModule,
     MatTooltipModule
     ],
   templateUrl: './sidebar.component.html',
@@ -32,7 +34,13 @@ export class SidebarComponent implements OnInit{
 
   constructor(
     private categoryService: CategoryService,
-    private toastr: ToastrService) {}
+    private toastr: ToastrService,
+    private translate: TranslateService)
+     {
+      translate.addLangs(['en', 'uk']);
+      translate.setDefaultLang('en');
+      translate.use('uk');
+    }
 
   ngOnInit(): void {
     this.loadCategories();

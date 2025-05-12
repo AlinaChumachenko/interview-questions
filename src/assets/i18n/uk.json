@@ -1,0 +1,16 @@
+{
+    "CATEGORIES_TITLE": "Категорії",
+    "CATEGORIES_PLACEHOLDER": "Нова категорія",
+    "ADD_CATEGORY": "Введіть категорію та натисніть Enter",
+    "DELETE_CONFIRM": "Ви впевнені, що хочете видалити цю категорію?",
+    "YES": "Так, видалити",
+    "NO": "Ні, скасувати",
+    "ANSWER_TEXT_MODAL": "Як би ви хотіли відповісти?",
+    "ANSWER_TITLE": "Відповідь на питання",
+    "ANSWER_TEXT_BUTTON": "Генерувати з AI",
+    "ANSWER_TEXT_BUTTON_YES": "Додати відповід",
+    "ANSWER_TEXT_BUTTON_NO": "Закрити",
+    "ANSWER_TITLE_AI": "AI відповідь:",
+    "ANSWER_TEXT_BUTTON_USE": "Використати цю відповідь",
+    "ANSWER_PLACEHOLDER": "Введіть вашу відповід тут..."
+  }

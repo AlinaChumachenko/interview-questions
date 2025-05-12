@@ -1,0 +1,17 @@
+{
+    "CATEGORIES_TITLE": "Categories",
+    "CATEGORIES_PLACEHOLDER": "New category",
+    "ADD_CATEGORY": "Type a category and press Enter to add",
+    "DELETE_CONFIRM": "Are you sure you want to delete this category?",
+    "YES": "Yes, delete",
+    "NO": "No, cancel",
+    "ANSWER_TITLE": "Answer the question",
+    "ANSWER_TEXT_MODAL": "How would you like to answer?",
+    "ANSWER_TEXT_BUTTON": "Generate with AI",
+    "ANSWER_TEXT_BUTTON_YES": "Submit Answer",
+    "ANSWER_TEXT_BUTTON_NO": "Close",
+    "ANSWER_TITLE_AI": "AI Answer:",
+    "ANSWER_TEXT_BUTTON_USE": "Use this answer",
+    "ANSWER_PLACEHOLDER": "Or type your answer here..."
+    
+  }
