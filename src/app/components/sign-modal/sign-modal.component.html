@@ -4,8 +4,7 @@
             &#10006;
           </button>
       <h2>{{ title }}</h2>
-      <!-- <app-sign-in-form *ngIf="formType === 'signIn'"></app-sign-in-form>
-      <app-sign-up-form *ngIf="formType === 'signUp'"></app-sign-up-form> -->
+      
 
       @if (formType === 'signIn') {
         <app-sign-in-form (authSuccess)="onAuthSuccess()" (closeModal)="close()"></app-sign-in-form>

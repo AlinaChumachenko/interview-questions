@@ -3,7 +3,6 @@ import { AiService } from  '../../services/ai.service';
 import { FormsModule } from '@angular/forms';
 import { Question } from '../../services/category.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -24,13 +23,8 @@ export class AnswerModalComponent implements OnInit {
   aiAnswerGenerated: boolean = false;
 
   constructor(
-    private aiService: AiService,
-    private toastr: ToastrService,
-    private translate: TranslateService) {
-      translate.addLangs(['en', 'uk']);
-      translate.setDefaultLang('en');
-      translate.use('uk');
-    }
+    private aiService: AiService,    
+    private translate: TranslateService) {}   
 
   ngOnInit() {
     if (this.question?.answer) {

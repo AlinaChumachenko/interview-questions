@@ -4,11 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../../services/auth.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-sign-in-form',
-  imports: [ReactiveFormsModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatIconModule, TranslateModule],
   standalone: true,
   templateUrl: './sign-in-form.component.html',  
   styleUrl: './sign-in-form.component.scss'
@@ -21,9 +22,9 @@ export class SignInFormComponent {
   constructor(
     private fb: FormBuilder, 
     private authService: AuthService,
-    private toastr: ToastrService
-    ) {
-    
+    private toastr: ToastrService,
+    private translate: TranslateService) {
+      
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]

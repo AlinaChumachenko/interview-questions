@@ -1,6 +1,6 @@
 <div class="not-found-container">
-    <h1 class="status-code">404</h1>
-    <p class="message">Oops!Page not found  😥</p>
-    <a routerLink="/home" class="back-link">← Back to the home page</a>
+    <h1 class="status-code">{{ 'ERROR_CODE' | translate }}</h1>
+    <p class="message">{{ 'ERROR_CODE_MESSAGE' | translate }} 😥</p>
+    <a routerLink="/home" class="back-link">{{ 'ERROR_CODE_TEXT' | translate }}</a>
    
   </div>

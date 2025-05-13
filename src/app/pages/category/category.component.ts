@@ -7,15 +7,15 @@ import { AuthService } from '../../services/auth.service';
 import { AiService } from '../../services/ai.service';
 import { AnswerModalComponent } from '../../components/answer-modal/answer-modal.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-category',
   imports: [
-    // NgFor, 
-    // NgIf,
-    MatIconModule, 
     CommonModule,
+    MatIconModule,
+    TranslateModule,
     AnswerModalComponent,
     MessageModalComponent],
   standalone: true,
@@ -23,9 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './category.component.scss'
 })
 
-
 export class CategoryComponent implements OnInit{
-
   
   category: string = '';
   questions: Question[] = [];
@@ -35,21 +33,22 @@ export class CategoryComponent implements OnInit{
   aiAnswer: string = '';
   newQuestionText = '';
   confirmDeleteId: string | null = null;
+  currentLang: string = 'en';
 
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private authService: AuthService,
     private aiService: AiService,
-  
-  ) {}
+    private translate: TranslateService) {}
 
-  ngOnInit(): void {        
-      // this.isAuthenticated = this.authService.isAuthenticated();
-        this.route.paramMap.subscribe((params) => {
-        this.category = params.get('name')!;    
-        this.loadQuestions();
-      });    
+  ngOnInit(): void {      
+    
+    this.currentLang = localStorage.getItem('lang') || this.translate.getDefaultLang() || 'en';
+      this.route.paramMap.subscribe((params) => {
+      this.category = params.get('name')!;    
+      this.loadQuestions();
+    });    
   }
 
   get isAuthenticated(): boolean {
@@ -132,6 +131,12 @@ export class CategoryComponent implements OnInit{
       // this.aiAnswer = res.answer;
       this.showAnswerModal = true;
     })
+  }
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.currentLang = lang; 
   }
   
 

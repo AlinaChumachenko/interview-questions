@@ -1,16 +1,16 @@
 <form class="form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label class="form-label" for="username">Username</label>
+      <label class="form-label" for="username">{{'USERNAME' | translate}}</label>
       <input class="form-input" type="text" id="username" formControlName="username" />
     </div>
     
     <div class="form-group">
-      <label class="form-label" for="email">Email</label>
+      <label class="form-label" for="email">{{'EMAIL' | translate}}</label>
       <input class="form-input" type="email" id="email" formControlName="email" />
     </div>
     
     <div class="form-group password-container">
-      <label class="form-label" for="password">Password</label>
+      <label class="form-label" for="password">{{'PASSWORD' | translate}}</label>
       <div class="input-wrapper">
         <input 
           class="form-input" 
@@ -27,5 +27,5 @@
       </div>
     </div>
   
-    <button class="button" type="submit" [disabled]="signUpForm.invalid">Submit</button>
+    <button class="button" type="submit" [disabled]="signUpForm.invalid">{{'BUTTON_SUBMIT' | translate}}</button>
   </form>

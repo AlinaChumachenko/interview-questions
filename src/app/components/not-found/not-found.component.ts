@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-not-found',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslateModule],
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
+
+  constructor(
+    private translate: TranslateService) {}
 
 }

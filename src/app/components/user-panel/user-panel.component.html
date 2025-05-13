@@ -1,13 +1,18 @@
 <div class="user-panel">
+
+ 
+  
   @if (authService.isAuthenticated()) {
     <button class="button">
-      Welcome,{{ authService.getUserName() }}
+      {{ authService.getUserName() }}
     </button>
-    <button class="button" (click)="authService.logout()">Log out</button>
+    <button class="button" (click)="authService.logout()">{{'LOGOUT' | translate}}</button>
   } @else {
-    <button class="button" (click)="openModal('signIn')">Sign In</button>
-    <button class="button" (click)="openModal('signUp')">Sign Up</button>
+    <button class="button" (click)="openModal('signIn')">{{'SIGNIN' | translate}}</button>
+    <button class="button" (click)="openModal('signUp')">{{'SIGNUP' | translate}}</button>
   }
+
+  
 </div>
 
 @if (showModal) {

@@ -129,3 +129,37 @@
     transform: translateY(0);
   }
 }
+
+.category-panel{
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid #3c3c3c;
+  color: #3c3c3c;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    background: #605f5f;
+    color: #dee0cc;
+  }
+
+  &.active {
+    background: #605f5f;
+    color: #dee0cc;
+    border-color: #605f5f;
+    font-weight: bold;
+  }
+}

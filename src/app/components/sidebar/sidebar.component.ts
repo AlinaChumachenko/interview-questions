@@ -14,7 +14,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   selector: 'app-sidebar',
   standalone: true,
   imports: [
-    // NgFor,
     RouterLink,
     FormsModule, 
     RouterModule,
@@ -35,12 +34,7 @@ export class SidebarComponent implements OnInit{
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService,
-    private translate: TranslateService)
-     {
-      translate.addLangs(['en', 'uk']);
-      translate.setDefaultLang('en');
-      translate.use('uk');
-    }
+    private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.loadCategories();

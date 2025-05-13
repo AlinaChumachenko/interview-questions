@@ -1,17 +1,24 @@
 <div class="category-container">
+  <div class="category-panel">              
     <h2>{{ toUpperCase(category) }}</h2>
+
+    <div class="lang-switcher">
+      <button class="lang-btn" [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+      <button class="lang-btn" [class.active]="currentLang === 'uk'" (click)="switchLang('uk')">UA</button>
+    </div>
+  </div>
   
     <input
       [value]="newQuestionText"
       (input)="newQuestionText = $any($event.target).value"
-      placeholder="Introduce new nutrition"
+      [placeholder]="'ADD_QUESTION_INPUT' | translate"
       class="form-input"
     />
   
     @if (!isAuthenticated) {
-      <button class="button" (click)="openModal()">Add question</button>
+      <button class="button" (click)="openModal()">{{'ADD_QUESTION' | translate}}</button>
     } @else {
-      <button class="button" (click)="addQuestion()">Add question</button>
+      <button class="button" (click)="addQuestion()">{{'ADD_QUESTION' | translate}}</button>
     }
   
     <ul class="question-list">

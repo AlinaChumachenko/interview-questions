@@ -13,8 +13,8 @@
             rows="4"
           ></textarea>
           <div class="buttons-row">
-            <button class="button" (click)="submitManualAnswer()">{{ 'ANSWER_TEXT_BUTTON_YES' | translate }}</button>
-            <button class="button" (click)="close()">{{ 'ANSWER_TEXT_BUTTON_NO' | translate }}</button>
+            <button class="button" (click)="submitManualAnswer()">{{ 'BUTTON_YES' | translate }}</button>
+            <button class="button" (click)="close()">{{ 'BUTTON_NO' | translate }}</button>
           </div>
         </div>
       } @else {
@@ -22,7 +22,7 @@
         <p class="ai-response">{{ aiAnswer }}</p>
         <div class="buttons-row">
           <button class="button" (click)="confirmAIAnswer()">{{ 'ANSWER_TEXT_BUTTON_USE' | translate }}</button>
-          <button class="button" (click)="close()">{{ 'ANSWER_TEXT_BUTTON_NO' | translate }}</button>
+          <button class="button" (click)="close()">{{ 'BUTTON_NO' | translate }}</button>
         </div>
       }
     </div>
