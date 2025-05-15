@@ -1,4 +1,5 @@
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, inject } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, APP_INITIALIZER, inject } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClient, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
@@ -31,17 +32,17 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: APP_INITIALIZER,
-      useFactory: (translate: TranslateService) => {
-        return () => {
+      useFactory: () => {
+        return async () => {
+          const translate = inject(TranslateService);
           translate.addLangs(['en', 'uk']);
           translate.setDefaultLang('en');
           const savedLang = localStorage.getItem('lang');
           const browserLang = translate.getBrowserLang();
           const langToUse = savedLang || (browserLang?.match(/en|uk/) ? browserLang : 'en');
-          return translate.use(langToUse).toPromise(); 
+          await lastValueFrom(translate.use(langToUse));
         };
       },
-      deps: [TranslateService],
       multi: true
     }
     

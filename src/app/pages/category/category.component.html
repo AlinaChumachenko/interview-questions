@@ -42,6 +42,7 @@
                         {{ question.showAnswer ? 'visibility_off' : 'visibility' }}
                     </mat-icon>
                  }
+                 
               </div>
               
             } @else {
@@ -93,3 +94,6 @@
     }
   </div>
   
+  <ng-template #loadingTemplate>
+    <div>Завантаження...</div>
+  </ng-template>

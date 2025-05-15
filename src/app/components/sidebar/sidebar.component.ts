@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
@@ -9,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Question } from '../../models/question.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -34,10 +36,17 @@ export class SidebarComponent implements OnInit{
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService,
-    private translate: TranslateService) {}
+    private translate: TranslateService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loadCategories();
+  }
+
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
   }
 
   loadCategories() {
@@ -63,8 +72,15 @@ export class SidebarComponent implements OnInit{
   }
 
   deleteCategory(category: Category) {
+    const currentCategory = this.route.snapshot.paramMap.get('name'); 
     this.categoryService.deleteCategory(category.id).subscribe({
       next: () => {
+        if (currentCategory?.toLowerCase() === category.name.toLowerCase()) {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/']);
+          });
+        }
+  
         this.loadCategories();
         this.confirmDeleteCategory = null;
         this.toastr.success('Category deleted successfully!', 'Success');

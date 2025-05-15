@@ -33,6 +33,7 @@ export class AnswerModalComponent implements OnInit {
     }
   }
   generateWithAI() {
+    if (!this.question.question) return;
   this.aiService.generateAnswer(this.question.question).subscribe((res)=>{
     this.aiAnswer = res.answer;
     this.aiAnswerGenerated = true

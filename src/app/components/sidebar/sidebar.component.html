@@ -14,12 +14,14 @@
           >
             {{ category.name }}
           </a>
+          @if (isAuthenticated) {
           <mat-icon
             class="icon-button delete-icon"
             (click)="confirmDeleteCategory = category"
           >
             delete
           </mat-icon>
+        }
         </div>
       }
   <div
